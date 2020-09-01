@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="container">
-      <form action="POST">
+      <form method="POST">
         {% csrf_token %}
         <fieldset class="form-group">
           <legend class="border-bottom mb-4">Sign Up</legend>
@@ -25,10 +25,5 @@
         <a href="#"><p>i have an account</p></a>
       </form>
     </div>
-    {%if messages%}
-        {% for message in messages %}
-            {{message}}
-        {%endfor%}
-    {%endif%}
   </body>
 </html>
