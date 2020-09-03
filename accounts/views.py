@@ -33,4 +33,4 @@ def profileupdate(request):
             return redirect('profile')
     else:
         pform = ProfileUpdateForm(instance = request.user.profile)
-    return render(request, 'accounts/profielupdate.html', {'pform':pform})
+    return render(request, 'accounts/profileupdate.html', {'pform':pform})

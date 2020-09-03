@@ -4,8 +4,8 @@ from django.db.models.signals import post_save
 # Create your models here.
 
 class profile(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
-    image = models.ImageField(upload_to = 'profile_picture')
+    user = models.OneToOneField(User, related_name="profile", on_delete = models.CASCADE)
+    image = models.ImageField(default='default.png', upload_to = 'profile_picture')
     bio = models.TextField(default='')
 
     def __str__(self):
@@ -17,3 +17,9 @@ def create_profile(sender, **kwargs):
         user_profile = profile.objects.create(user=kwargs['instance'])
 
 post_save.connect(create_profile, sender=User)
+
+# @property
+# def photo_url(self):
+#     if self.image and hasattr(self.image, 'url'):
+#         return self.image.url
+    

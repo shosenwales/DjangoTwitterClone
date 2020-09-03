@@ -1,7 +1,20 @@
 {% extends 'feed/base.html' %}
 
 {% block content %}
-    {% for tweet in tweets %}
+<!-- <div class="jumbotron">
+    <h1 class="display-4">Hello {{user.username}}</h1>
+    <p class="lead">This is a simple twitter clone app</p>
+    <hr class="my-4">
+    <p>click below to create a tweet</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="{% url 'tweetcreate' %}" role="button">Create</a>
+    </p>
+</div> -->
+
+
+<div class="container">
+    {% for tweet in object_list %}
+        <br>
         <div class="card">
             <div class="card-header">
                 <a href="#"><h4>{{tweet.handle}}</h4></a>
@@ -9,7 +22,11 @@
             </div>
             <div class="card-body">
                 <p class="card-text">{{tweet.text}}</p>
+                {% if tweet.handle == user %}
+                    <a href="{% url 'tweetdelete' tweet.id %}"><button class="btn btn-outline-danger">Delete</button></a>
+                {% endif %}
             </div>
         </div>
     {% endfor %}
+</div>
 {% endblock content %}
