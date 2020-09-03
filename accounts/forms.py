@@ -5,7 +5,11 @@ from .models import profile
 
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField()
+    email = forms.EmailField(widget=forms.TextInput(
+        attrs={
+            'class': 'form-control'
+        }
+    ))
 
     class Meta:
         model = User
